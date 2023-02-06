@@ -1828,6 +1828,7 @@
         "IncrementEffectTitle": "Increase Effect Level",
         "InitiativeHeader": "Initiative bonus",
         "InitativeIsNow": "{name}'s Initiative is now {value}!",
+        "InitativeIsSet": "{name}'s Initiative has been set.",
         "InitiativeLabel": "Initiative",
         "InitiativeWithSkill": "Initiative: {skillName}",
         "InlineCheck": {

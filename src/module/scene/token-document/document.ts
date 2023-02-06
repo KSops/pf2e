@@ -325,9 +325,11 @@ class TokenDocumentPF2e<TActor extends ActorPF2e = ActorPF2e> extends TokenDocum
     async setInitiative({
         initiative,
         sendMessage = true,
+        revealInitiative = true,
     }: {
         initiative: number;
         sendMessage?: boolean;
+        revealInitiative?: boolean;
     }): Promise<void> {
         if (!game.combat) {
             ui.notifications.error("PF2E.Encounter.NoActiveEncounter");
@@ -355,7 +357,9 @@ class TokenDocumentPF2e<TActor extends ActorPF2e = ActorPF2e> extends TokenDocum
                     whisper: this.actor?.hasPlayerOwner
                         ? []
                         : game.users.contents.flatMap((user) => (user.isGM ? user.id : [])),
-                    content: game.i18n.format("PF2E.InitativeIsNow", { name: this.name, value: initiative }),
+                    content: revealInitiative
+                        ? game.i18n.format("PF2E.InitativeIsNow", { name: this.name, value: initiative })
+                        : game.i18n.format("PF2E.InitativeIsSet", { name: this.name }),
                 },
             ]);
         }
